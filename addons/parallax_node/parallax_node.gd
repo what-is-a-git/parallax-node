@@ -32,6 +32,10 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	_update.call_deferred()
+
+
+func _update() -> void:
 	if not ignore_camera_changes:
 		_camera = get_viewport().get_camera_2d()
 	
@@ -40,4 +44,4 @@ func _process(delta: float) -> void:
 		return
 	
 	position = _offset + (_camera.get_screen_center_position() - \
-			(get_viewport_rect().size / 2.0)) * (Vector2.ONE - parallax_factor)
+		(get_viewport_rect().size / 2.0)) * (Vector2.ONE - parallax_factor)
